@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>True Song Meanings: What is the meaning of your favorite songs?</title>
+<meta name="description" content="A very simple mapping of songs to their meanings.">
+<meta name="keywords" content="music, songs, meanings, parody, sex, drugs, death, satan">
+<meta name="viewport" content="width=device-width">
+<style>
+body {
+    background: powderblue;
+    text-align: center;
+    margin: auto;
+    font-family: sans-serif;
+    font-size: 1.25em;
+}
+
+@media all and (max-width: 480px) {
+    body { 
+        width: 80%;
+        font-size: 0.66em;
+    }
+}
+
+@media all and (max-width: 768px) {
+    body { width: 66%; }
+}
+
+@media all and (min-width: 769px) {
+    body { width: 33%; }
+}
+
+h1 {
+    margin-after: .15em;
+}
+form, form input, form button {
+    font-size: 1.0em;
+    margin-after: .25em;
+}
+div#result {
+    margin-top: 1em;
+    font-size: 1.75em;
+}
+#meaning.undefined {
+    color: gray;
+}
+#meaning.defined {
+    color: black;
+}
+</style>
+</head>
+<body>
+<h1>True Song Meanings</h1>
+<p><small><em>Because you know music is really only about <del>three</del> four things.</em></small></p>
+<form>Enter Song Title <input type="text" name="title" id="title" placeholder="Song Title"><button>Find Meaning</button></form>
+<div id="result"><strong>Meaning:</strong> <span id="meaning" class="undefined">What the song is about</span></div>
+<p id="about"><small>Made in 2013, by <a href="http://whump.com/">Bill Humphries</a>, from <a href="http://twitter.com/eassumption/status/404332378266406914">an idea of Tim Chevalier's</a>.</small></p>
+<script>
+// because you don't need JQuery for everything.
+(function() {
+    var meanings = [ 'Sex', 'Drugs', 'Death', 'Satan' ];
+    var meaning = document.getElementById('meaning');
+    var title = document.getElementById('title');
+    document.forms[0].onsubmit = function() {
+        if (title.value !== '') {
+            meaning.innerHTML = meanings[Math.floor(Math.random() * meanings.length)];
+            meaning.className = 'defined';
+        }
+        else {
+            meaning.innerHTML = 'Enter a song title'
+            meaning.className = 'undefined';
+        }
+        return false;
+    };
+})();
+</script>
+</body>
+</html>
